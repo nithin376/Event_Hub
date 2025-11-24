@@ -10,20 +10,23 @@ export default function Login() {
   const navigate = useNavigate()
   const [FormData, setFormData] = useState({ email: '', password: '' })
   const [userType, setUserType] = useState('')
-
+const[Loging,setLoging]=useState(false)
   const handleChange = (e) => {
     setFormData({ ...FormData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoging(true);
     const { email, password } = FormData
     if (!userType) {
       toast.warning('Please select the type of the user')
-      return
+       setLoging(false);
+       return
     }
     if (!email || !password) {
       toast.warning('Email and password are required')
+       setLoging(false);
       return
     }
     try {
@@ -31,21 +34,18 @@ export default function Login() {
       toast.success('Logged In Successful!',{
         autoClose:2000,
         onClose: ()=>{
-         if (userType === 'Admin') {
-        navigate('/Admin')
-      } else if (userType === 'User'&&response.data.email){
+     if (userType === 'User'&&response.data.email){
         localStorage.setItem('email',response.data.email)
-        console.log(email);
         navigate('/User')
-      } else if (userType === 'Organizer' && response.data.organizerId) {
+      } else if (userType === 'Organizer' && response.data.organizerId&&response.data.email) {
         localStorage.setItem('organizerId', response.data.organizerId)
+         localStorage.setItem('email',response.data.email);
         navigate('/Organizer')
       }
     }
       })
      
     } catch (err) {
-      console.error('Error:', err)
       if (err.response && err.response.status === 404) {
         toast.error('User Not Found')
       } else if (err.response && err.response.status === 401) {
@@ -53,6 +53,9 @@ export default function Login() {
       } else {
         toast.error('Server Error')
       }
+    }
+    finally{
+       setLoging(false);
     }
   }
 
@@ -66,8 +69,7 @@ export default function Login() {
           <div className="mb-3">
             <label className="form-label">Login as</label>
             <select className="form-select" value={userType} onChange={(e) => setUserType(e.target.value)}>
-              <option value="">Select</option>
-              <option value="Admin">Admin</option>
+              <option value="select">Select</option>
               <option value="User">User</option>
               <option value="Organizer">Organizer</option>
             </select>
@@ -96,7 +98,7 @@ export default function Login() {
               onChange={handleChange}
             />
           </div>
-          <button type="submit" className="signup-btn w-100">Login</button>
+          <button type="submit" className="signup-btn w-100" disabled={Loging}>{Loging?'LogingIn..':'Login'}</button>
         </form>
         <div className="text-center mt-3 login-link-container">
           <p>Don't Have an account?</p>

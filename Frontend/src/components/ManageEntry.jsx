@@ -31,9 +31,12 @@ export default function ManageEntry() {
         <thead>
           <tr>
             <th>Sl No.</th>
+            <th>Title</th>
+            <th>Category</th>
             <th>Team Name</th>
             <th>Email</th>
             <th>Phone Number</th>
+            <th>Registration Code</th>
           </tr>
         </thead>
         <tbody>
@@ -41,9 +44,12 @@ export default function ManageEntry() {
             data.map((entry, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
+                <td>{entry.title}</td>
+                <td>{entry.category}</td>
                 <td>{entry.TeamName}</td>
                 <td>{entry.email}</td>
                 <td>{entry.PhoneNumber}</td>
+                <td>{entry.id}</td>
               </tr>
             ))
           ) : (

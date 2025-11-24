@@ -114,7 +114,6 @@ export default function Signup() {
                         <label className='form-label'>Sign up as</label>
                         <select className='form-select' value={userType} onChange={(e) => { setuserType(e.target.value) }}>
                             <option value=''>Select User Type...</option>
-                            <option value="Admin">Admin</option>
                             <option value="User">User</option>
                             <option value="Organizer">Organizer</option>
                         </select>

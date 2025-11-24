@@ -1,5 +1,5 @@
 import { signinmodel, NewEventModel, NewEntryModel } from './models/siginModel.js';
-import crypto from 'crypto'
+import * as crypto from 'crypto'
 import bcrypt from 'bcrypt'
 import { transporter } from './utils/transpoerter.js';
 import dotenv from 'dotenv'
@@ -47,9 +47,10 @@ export async function LoginInsert(req,res){
             return res.status(200).json({ 
                 message: 'Logged in Successfully', 
                 organizerId:user.OrganizerId,
+                email:user.email
             });
         }
-           if (user.userType === 'Admin' || user.userType === 'User') {
+           if ( user.userType === 'User') {
             return res.status(200).json({ 
                 message: 'Logged in Successfully',
                 email:user.email
@@ -98,6 +99,9 @@ try{
     const event=await NewEventModel.findById(eventid)
     if(!event)
      return res.status(404).json({message:'Event not Found'});
+    const min=10000;
+    const max=100000;
+    const id=crypto.randomInt(min,max)
     const newEntry=new NewEntryModel({
         TeamName,
         email,
@@ -105,7 +109,8 @@ try{
         eventid,
         organizerId:event.organizerId,
         Title:event.Title,
-        Category:event.Category
+        Category:event.Category,
+        id:id
     })
     await newEntry.save()
     const mailOptions={
@@ -115,6 +120,7 @@ try{
         html:`<h1>Thank you for Regstering</h1>
                 <p>Hello ${TeamName},</p>
                 <p>Your registration for the event ${event.Title} has been successfully received.</p>
+                <p>Your Registration Code:<strong>${id}</strong></P>
                 <p>We look forward to see you there!</p>
                 <br>
                 <p>Best regards,</p>

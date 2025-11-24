@@ -4,7 +4,6 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import './index.css'
 import Signup from './components/Signup.jsx'
 import Login from './components/Login.jsx'
-import Admin from './components/Admin.jsx'
 import Organizer from './components/Organizer.jsx'
 import User from './components/User.jsx'
 import Event from './components/Event.jsx'
@@ -21,7 +20,6 @@ createRoot(document.getElementById('root')).render(
        <Route path='/Signup' element={<Signup />}/>
       <Route path='/Login' element={<Login />}/>
       <Route path='/Organizer' element={<Organizer/>}/>
-      <Route path='/Admin' element={<Admin />}/>
       <Route path='/User' element={<User />}/>
       <Route path='/Event' element={<Event />}/>
       <Route path='/Entry/:eventid' element={<Entry />}/>
