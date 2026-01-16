@@ -55,12 +55,12 @@ export default  function User() {
   return (
     <>
   <nav className="navbar navbar-expand-lg navbar-dark fixed-top navbar-gradient">
-    <h1 style={{color:'#30213dff'}}>EventHub</h1>
+    <h1 style={{color:'white'}}>EventHub</h1>
 <div class="container mt-3">
     <div className="container-fluid">
       <ul className="navbar-nav ms-auto ">
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{color:'black'}}>
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{color:'white'}}>
                                 {email}
                             </a>
                             <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

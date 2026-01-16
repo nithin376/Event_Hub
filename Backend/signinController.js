@@ -2,6 +2,7 @@ import { signinmodel, NewEventModel, NewEntryModel } from './models/siginModel.j
 import * as crypto from 'crypto'
 import bcrypt from 'bcrypt'
 import { transporter } from './utils/transpoerter.js';
+import { GoogleGenAI } from "@google/genai";
 import dotenv from 'dotenv'
 dotenv.config();
 //contrloer for SignUP
@@ -156,4 +157,19 @@ export async function Registartions(req,res){
     catch(err){
         return res.status(401).json({message:err})
     }
+}
+const ai = new GoogleGenAI({ apiKey: process.env.AI_KEY });
+ export async function main(req,res) {
+    try{
+        const Prompt=req.body.Prompt;
+  const response = await ai.models.generateContent({
+    model: "gemini-3-flash-preview",
+    systemInstruction: "You are a friendly assistant. Keep answers concise.",
+    contents:[{ role: 'user', parts: [{ text: Prompt }] }],
+  });
+  return res.status(200).json({data:response.text})
+}
+catch(err){
+    return res.status(500).json({err,message:"InternalServerError"})
+}
 }

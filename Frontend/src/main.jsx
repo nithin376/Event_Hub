@@ -10,6 +10,7 @@ import Event from './components/Event.jsx'
 import Entry from './components/Entry.jsx'
 import ManageEntry from './components/ManageEntry.jsx'
 import Registration from './components/Registration.jsx'
+import ChatBot from './components/ChatBot.jsx'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 createRoot(document.getElementById('root')).render(
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')).render(
       <Route path='/Entry/:eventid' element={<Entry />}/>
       <Route path='/ManageEntry' element={<ManageEntry />}/>
       <Route path='/Registration' element={<Registration />}/>
+      <Route path='/ChatBot' element={<ChatBot/>}/>
     </Routes>
     <ToastContainer />
     </BrowserRouter> 

@@ -80,7 +80,7 @@ const handleLogout=(e)=>{
       <style>{pageStyles}</style>
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top navbar-gradient">
         <div className="container-fluid">
-          <h1 style={{color:'#30213dff'}}>EventHub</h1>
+          <h1 style={{color:'white'}}>EventHub</h1>
           <button
             className="navbar-toggler"
             type="button"
@@ -103,7 +103,7 @@ const handleLogout=(e)=>{
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  style={{color:'black'}}
+                  style={{color:'white'}}
                 >
                   {email}
                 </a>
@@ -121,6 +121,11 @@ const handleLogout=(e)=>{
                   <li>
                     <Link className="dropdown-item" to="/Event">
                       Create Event
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/ChatBot">
+                      Ai ChatBot
                     </Link>
                   </li>
                   <li><hr className="dropdown-divider" /></li>

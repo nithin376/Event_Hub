@@ -85,6 +85,15 @@ const NewEntry=new schema({
       required:true
    }
 })
+const Aimodel= new schema({
+              Prompt:
+              {
+               type:String,
+              required:true
+              }
+
+})
 export const signinmodel=mongoose.model('UserData',signin)
 export const NewEventModel=mongoose.model('Event',NewEvent)
 export const NewEntryModel=mongoose.model('Entry',NewEntry)
+export const NewAimodel=mongoose.model('Ai',Aimodel)

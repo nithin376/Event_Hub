@@ -12,6 +12,24 @@ const formContainerStyle = {
     borderRadius: '10px',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
 };
+const heading_style={
+    background: 'linear-gradient(120deg, #ff3cac 0%, #784ba0 50%, #ffb653 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    fontWeight: 'bold',
+    display: 'inline-block',
+    width: '100%'
+  }
+  const button_style={
+background: 'linear-gradient(120deg, #ff3cac 0%, #784ba0 50%, #ffb653 100%)',
+  color: 'white',
+  border: 'none',
+  padding: '8px 15px',
+  borderradius: '20px',
+  fontweight: 'bold',
+  cursor:'pointer'
+  }
+
 export default function Entry() {
     const navigate=useNavigate();
     const{eventid}=useParams();
@@ -63,7 +81,7 @@ function Validate(e){
     };
     return (
         <div style={formContainerStyle}>
-            <h2 className='text-center mb-4'>Event Registration</h2>
+            <h2 className='text-center mb-4' style={heading_style}>Event Registration</h2>
             <form onSubmit={handleSubmit}>
                 <div className='mb-3'>
                     <label htmlFor='TeamName' className='form-label'>Team Name</label>
@@ -101,7 +119,7 @@ function Validate(e){
                         placeholder='Enter your Phone Number' required
                     />
                 </div>
-                <button type='submit' className='btn btn-primary w-100'>Register</button>
+                <button type='submit' className='btn btn-primary w-100' style={button_style}>Register</button>
             </form>
         </div>
     );

@@ -3,6 +3,23 @@ import axios from 'axios'
 import { ToastContainer,toast } from 'react-toastify';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+const heading_style={
+  background: 'linear-gradient(120deg, #ff3cac 0%, #784ba0 50%, #ffb653 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    fontWeight: 'bold',
+    display: 'inline-block',
+    width: '100%'
+}
+ const button_style={
+background: 'linear-gradient(120deg, #ff3cac 0%, #784ba0 50%, #ffb653 100%)',
+  color: 'white',
+  border: 'none',
+  padding: '8px 15px',
+  borderradius: '20px',
+  fontweight: 'bold',
+  cursor:'pointer'
+  }
 export default function Event() {
   const navigate=useNavigate()
     const [formData, setFormData] = useState({
@@ -52,7 +69,7 @@ export default function Event() {
     <div>
   <div className="organizer-container">
       <div className="card shadow-lg p-4">
-        <h1 className="card-title text-center mb-4"style={{color:'purple'}}>Create New Event</h1>
+        <h1 className="card-title text-center mb-4"style={heading_style}>Create New Event</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="Title" className="form-label">Title</label>
@@ -152,7 +169,7 @@ export default function Event() {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">Add Event</button>
+          <button type="submit" className="btn btn-primary w-100"style={button_style}>Add Event</button>
         </form>
       </div>
     </div>

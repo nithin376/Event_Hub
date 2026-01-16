@@ -112,7 +112,7 @@ export default function Signup() {
                 <form onSubmit={handleSubmit}>
                     <div className='mb-3'>
                         <label className='form-label'>Sign up as</label>
-                        <select className='form-select' value={userType} onChange={(e) => { setuserType(e.target.value) }}>
+                        <select className='form-select' value={userType} onChange={(e) => { setuserType(e.target.value)}}>
                             <option value=''>Select User Type...</option>
                             <option value="User">User</option>
                             <option value="Organizer">Organizer</option>
